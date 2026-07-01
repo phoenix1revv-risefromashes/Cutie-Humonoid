@@ -1,0 +1,64 @@
+name: Repo Hygine
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    block-unwanted-repository-files:
+        name: block unwanted repository files
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: block secret files
+              run: |
+                  bad_files=$(git ls-files | grep -E '\.env$|\.env\.local$|secrets\.yaml$|credentials\.json$|\.pem$|\.key$' || true)
+
+                  if [ -n "$bad_files" ]; then
+                    echo "Bad files found"
+                    echo "$bad_files"
+                    exit 1
+                  fi
+                
+            - name: block large model files and runtime logs
+              run: |
+                bad_files=$(git ls-files | grep -E '\.onnx$|\.pt$|\.pth$|\.bin$|\.gguf$' || true) 
+
+                if [ -n "$bad_files" ]; then
+                echo "Large files models should not be commite directly"
+                echo "$bad_files"
+                exit 1
+                fi
+            
+            - name: Block generated ROS2 folders logs and recordings
+              run: |
+                bad_files=$(git ls-files | grep -E '^build/|^install/|^log/|^logs/|^recordings/' || true)
+
+                if [ -n "$bad_files" ]; then
+                echo "ROS2/logs/recordings should not be committed"
+                echo "$bad_files"
+                exit 1
+                fi
+            
+            - name: confirm repo hygine
+              run: |
+                echo "Repo hygiene check passed"
+            
+
+
+
+
+
+
+        
+
+
+
+
+    
