@@ -1,6 +1,7 @@
 # Cutie Humoinoid
 
 [![Repo Hygiene](https://github.com/phoenix1revv-risefromashes/Cutie-Humonoid/actions/workflows/repo_hygiene.yml/badge.svg?branch=main)](https://github.com/phoenix1revv-risefromashes/Cutie-Humonoid/actions/workflows/repo_hygiene.yml)
+[![ROS2 Build](https://github.com/phoenix1revv-risefromashes/Cutie-Humonoid/actions/workflows/ros2_build.yml/badge.svg?branch=main)](https://github.com/phoenix1revv-risefromashes/Cutie-Humonoid/actions/workflows/ros2_build.yml)
 
 Cutie is an extremely witty and funny humanoid robot assistant engineered to bring robotic interaction closer to natural human interaction.
 
