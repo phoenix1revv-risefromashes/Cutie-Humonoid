@@ -41,5 +41,8 @@ uint8 priority
 #Node requesting this expression
 string source
 
+#optional context detail for debugging or behavior explanation
+string detail
+
 
 
